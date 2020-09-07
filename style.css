@@ -1,0 +1,36 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th, td {
+	padding: 12px;
+  border: 1px solid #999;
+  text-align: center;
+}
+
+th[rowspan] {
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	transform: rotate(-180deg);
+}
+
+#notes ul {
+	list-style: disc;
+}
+
+p, ul, li {
+	text-align: left;
+}
+
+a {
+	text-decoration: none;
+}
+
+hangeul-vowel, hangeul-consonant {
+	font-weight: 400;
+}

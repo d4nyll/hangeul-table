@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" type="text/css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<template id="hangeul-syllable">
+		<div>
+			<div id="syllable">
+				<slot name="hangeul"></slot>
+			</div>
+		</div>
+	</template>
+	<script type="module"">
+
+		import { children, define, html } from 'https://unpkg.com/hybrids@^4/src';
+		function showInfoboxAfterDelay(host) {
+			if (!host.timeoutId) {
+				host.timeoutId = window.setTimeout(() => {
+					host.timeoutId = 0;
+					const infobox = host.shadowRoot.getElementById("infobox");
+					infobox.classList = ["show"];
+				}, 300);
+			}
+		}
+		function cancelDelay(host) {
+			if (host.timeoutId) {
+				window.clearTimeout(host.timeoutId);
+				host.timeoutId = 0;
+			}
+		}
+		function hideInfoBox(host, e) {
+			e.target.classList = [];
+		}
+		define('hangeul-letter', {
+			timeoutId: 0,
+			hangeul: "ㅏ",
+			romanization: "a",
+			ipa: "a",
+			name_hangeul: "나",
+			name_romanization: "a",
+			notes: "",
+			render: ({ timeoutId, hangeul, romanization, ipa, name_hangeul, name_romanization, notes }) => html`
+				<style>
+					#container {
+						position: relative;
+					}
+
+					#infobox {
+						display: none;
+					}
+
+					#infobox.show {
+					/* #container:hover > #infobox { */
+						display: block;
+						position: absolute;
+						height: 240px;
+						width: 240px;
+						left: 50%;
+						top: 50%;
+						transform: translate(-50%, -50%);
+						background: #ffd09e82;
+						border: 2px solid black;
+						padding: 12px;
+						box-sizing: border-box;
+						/* pointer-events: none; */
+					}
+
+				</style>
+				<div id="container" onmouseover="${showInfoboxAfterDelay}" onmouseleave="${cancelDelay}">
+					<div id="basic">
+						<div id="letter">${hangeul}</div>
+						<div id="romanization">${romanization}</div>
+						<div id="ipa">/${ipa}/</div>
+					</div>
+					<div id="infobox" onmouseleave="${hideInfoBox}">
+						<div id="infobox_letter">${hangeul}<</div>
+						<div id="infobox_romanization">${romanization}</div>
+						<div id="infobox_ipa">/${ipa}/</div>
+						<div id="name">
+							<div id="name_hangeul">${name_hangeul}</div>
+							<div id="name_romanization">${name_romanization}</div>
+						</div>
+						<div id="notes">${notes}</div>
+					</div>
+				</div>`,
+		});
+		window.customElements.define('hangeul-syllable', class extends HTMLElement {
+				connectedCallback() {
+					const template = document.getElementById('hangeul-syllable');
+					const shadowRoot = this.attachShadow({ mode: 'open' }).appendChild(template.content.cloneNode(true));
+				}
+		}); </script>
+	<table>
+		<caption>한글 — Hangeul Alphabet</caption>
+		<colgroup>
+			<col span="4">
+			<col span="9" class="basic">
+			<col span="5" class="aspirated">
+			<col span="5" class="tense">
+		</colgroup>
+		<thead>
+			<tr>
+				<td colspan="4"></td>
+				<th colspan="19">Consonants</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="4"></td>
+				<th scope="colgroup" colspan="9">Basic</th>
+				<th scope="colgroup" colspan="5">Aspirated</th>
+				<th scope="colgroup" colspan="5">Tense</th>
+			</tr>
+			<tr>
+				<td colspan="4"></td>
+				<th>ㄴ</th>
+				<th>ㄷ</th>
+				<th>ㄹ</th>
+				<th>ㅁ</th>
+				<th>ㅂ</th>
+				<th>ㅅ</th>
+				<th>ㅇ</th>
+				<th>ㅈ</th>
+				<th>ㅊ</th>
+				<th>ㅋ</th>
+				<th>ㅌ</th>
+				<th>ㅍ</th>
+				<th>ㅎ</th>
+				<th>ㄲ</th>
+				<th>ㄸ</th>
+				<th>ㅃ</th>
+				<th>ㅉ</th>
+				<th>ㅆ</th>
+			</tr>
+			<tr>
+				<th rowspan="0">Vowels</th>
+				<th rowspan="10">Basic</th>
+				<th rowspan="6"></th>
+				<th>
+					<hangeul-letter
+						hangeul="ㅏ"
+						romanization="a"
+						ipa="a"
+						name_hangeul="나"
+						name_romanization="a"
+						notes="<b>a</b>pple"
+					>
+					</hangeul-letter>
+				</th>
+				<td>
+					<hangeul-syllable>
+						<span slot="hangeul">나</span>
+						<span slot="romanization">na</span>
+					</hangeul-syllable>
+				</td>
+			</tr>
+			<tr>
+				<th>ㅜ</th>
+			</tr>
+			<tr>
+				<th>ㅓ</th>
+			</tr>
+			<tr>
+				<th>ㅗ</th>
+			</tr>
+			<tr>
+				<th>ㅡ</th>
+			</tr>
+			<tr>
+				<th>ㅣ</th>
+			</tr>
+			<tr>
+				<th rowspan="4">Iotized</th>
+				<th>ㅑ</th>
+			</tr>
+			<tr>
+				<th>ㅠ</th>
+			</tr>
+			<tr>
+				<th>ㅕ</th>
+			</tr>
+			<tr>
+				<th>ㅛ</th>
+			</tr>
+			<tr>
+				<th rowspan="11" colspan="2">Complex</th>
+				<th>ㅢ</th>
+			</tr>
+			<tr>
+				<th>ㅚ</th>
+			</tr>
+			<tr>
+				<th>ㅐ</th>
+			</tr>
+			<tr>
+				<th>ㅟ</th>
+			</tr>
+			<tr>
+				<th>ㅔ</th>
+			</tr>
+			<tr>
+				<th>ㅒ</th>
+			</tr>
+			<tr>
+				<th>ㅖ</th>
+			</tr>
+			<tr>
+				<th>ㅘ</th>
+			</tr>
+			<tr>
+				<th>ㅝ</th>
+			</tr>
+			<tr>
+				<th>ㅙ</th>
+			</tr>
+			<tr>
+				<th>ㅞ</th>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

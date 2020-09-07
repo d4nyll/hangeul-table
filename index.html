@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet"> 
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<template id="hangeul-letter">
+		<style>
+			#container {
+				position: relative;
+			}
+
+			#basic {
+				user-select: none;
+			}
+
+			#infobox {
+				display: none;
+				z-index: 4;
+			}
+
+			/* #infobox { */
+			#infobox.show {
+			/* #container:hover > #infobox { */
+				display: block;
+				position: absolute;
+				min-width: 160px;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				background: #ffffff;
+				border: 2px solid black;
+				padding: 12px;
+				box-sizing: border-box;
+			}
+
+			#infobox_rr {
+				padding-bottom: 12px;
+			}
+
+			#name {
+				background: #e8eded;
+			}
+
+			#hangeul {
+				font-size: 2rem;
+			}
+
+			#rr {
+				font-size: 1.2rem;
+			}
+
+			#name_rr, #name_hangeul {
+				display: inline-block;
+				padding: 6px;
+			}
+
+			#infobox_hangeul {
+				font-size: 4rem;
+			}
+
+			#infobox_rr {
+				font-size: 2rem;
+			}
+
+			table {
+				table-layout: fixed;
+				border-collapse: collapse;
+				width: 100%;
+				background-color: #e8eded;
+			}
+
+			thead {
+				border-bottom: 1px grey solid;
+			}
+
+			th, td {
+				padding: 6px
+			}
+
+			span.pronunciation {
+				font-weight: bold;
+				text-decoration: underline;
+			}
+
+			#notes {
+				min-width: 240px;
+			}
+		</style>
+		<div id="container">
+			<div id="basic">
+				<div id="hangeul"></div>
+				<div id="rr"></div>
+			</div>
+			<div id="infobox">
+				<div id="name"></div>
+				<div id="infobox_hangeul"></div>
+				<div id="infobox_rr"></div>
+				<table id="ipa_table"></table>
+				<div id="notes"><slot></slot></div>
+			</div>
+		</div>
+	</template>
+	<script type="module" src="./HangeulVowel.js"></script>
+	<script type="module" src="./HangeulConsonant.js"></script>
+	<script type="module" src="./HangeulCharacter.js"></script>
+	<table>
+		<caption>한글 — Hangeul Alphabet</caption>
+		<colgroup>
+			<col span="4">
+			<col span="9" class="basic">
+			<col span="5" class="aspirated">
+			<col span="5" class="tense">
+		</colgroup>
+		<thead>
+			<tr>
+				<td colspan="4"></td>
+				<th colspan="19">Consonants</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="4"></td>
+				<th scope="colgroup" colspan="9">Basic</th>
+				<th scope="colgroup" colspan="5"><a href="https://en.wikipedia.org/wiki/Aspirated_consonant" title="Consonants that ends with a release of a strong burst of breath" target="_blank">Aspirated</a></th>
+				<th scope="colgroup" colspan="5"><a href="https://en.wikipedia.org/wiki/Tenseness" title="Pronounced with more emphasis and muscular effort or constriction than is typical" target="_blank">Tense</a></th>
+			</tr>
+			<tr>
+				<td colspan="4"></td>
+				<th>
+					<hangeul-consonant hangeul="ㄱ" rr="g/k" name="기역;giyeok" ipa="ɡ,*g*all;k,lo*ck*">
+						<p>ㄱ is <em>romanized</em> as 'g' when it's followed by a vowel, and 'k' otherwise.</p>
+						<p>However, ㄱ is <em>pronounced</em> as:
+							<ul>
+								<li>/k/ (unvoiced) - start of word</li>
+								<li>/ɡ/ (voiced) - start of syllable</li>
+								<li>/k/ (unvoiced) - end of word</li>
+							</ul>
+						</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㄴ" rr="n" name="니은;nieun" ipa="n,*n*o"></hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㄷ" rr="d/t" name="디귿;digeut" ipa="d,*d*oll;t,le*t*">
+						<p>ㄷ is <em>romanized</em> as 'd' when it's followed by a vowel, and 't' otherwise.</p>
+						<p>However, ㄷ is <em>pronounced</em> as:
+							<ul>
+								<li>/t/ (unvoiced) - start of word</li>
+								<li>/d/ (voiced) - start of syllable</li>
+								<li>/t/ (unvoiced) - end of word</li>
+							</ul>
+						</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㄹ" rr="r/l" name="리을;rieul" ipa="ɾ,TBD;l,a*l*ike">
+						<p>ㄹ is <em>romanized</em> as 'r' when it's followed by a vowel, and 'l' otherwise.</p>
+						<p>However, ㄹ is <em>pronounced</em> as /ɾ/ except when it's at the end of a word, where it's pronounced as /l/.</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅁ" rr="m" name="미음;mieum" ipa="m,*m*all"></hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅂ" rr="b/p" name="비읍;bieup" ipa="b,*b*ack;p,cli*p*">
+						<p>ㅂ is <em>romanized</em> as 'b' when it's followed by a vowel, and 'p' otherwise.</p>
+						<p>However, ㅂ is <em>pronounced</em> as:
+							<ul>
+								<li>/p/ (unvoiced) - start of word</li>
+								<li>/b/ (voiced) - start of syllable</li>
+								<li>/p/ (unvoiced) - end of word</li>
+							</ul>
+						</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅅ" rr="s" name="시옷;siot" ipa="s,*s*ee;ɕ,*sh*e;t,le*t*">
+						<p>ㅅ is pronounced as:
+							<ul>
+								<li>/p/ - /s/ most of the time</li>
+								<li>/ɕ/ - before an ㅣ or iotized vowels</li>
+								<li>/t/ - end of a syllable</li>
+							</ul>
+						</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅇ" rr="-/ng" name="이응;ieung" ipa="-,;ŋ,si*ng*">
+						<p>ㅇ is silent except at the end of a syllable, where it's pronounced /ŋ/.</p>
+						<p>ㅇ may be placed at the beginning of a syllable as the <i>placeholder consonant</i>. This is needed because each syllable block must start with a consonant. So for syllables that actually starts with a vowel sound, the silent placeholder consonant is added to meet this constraint.</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅈ" rr="j" name="jieut;지읒" ipa="ʨ,*j*am;dz,be*ds*;dʑ,*g*ee;t,le*t*;ts,ca*ts*;tɕ,*ch*eek">
+						<p>ㅈ is pronounced as:
+							<ul>
+								<li>/tɕ/ - at the start of a word</li>
+								<li>/ʨ/ - at the start of a syllable</li>
+								<li>/t/ - end of a syllable</li>
+							</ul>
+						</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅊ" rr="ch" name="chieut;치읓" ipa="tsʰ,le*t's h*ave;tɕʰ,*ch*eek;t,le*t*">
+						<p>ㅊ is pronounced as /tɕʰ/ unless it's at the end of a syllable, when it's pronounced as /t/.</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅋ" rr="k" name="kieuk;키읔" ipa="kʰ,*c*up;k,lo*ck*">
+						<p>ㅋ is pronounced as /kʰ/ unless it's at the end of a syllable, when it's pronounced as /k/.</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅌ" rr="t" name="tieut;티읕" ipa="tʰ,*t*all;t,le*t*">
+						<p>ㅌ is pronounced as /tʰ/ unless it's at the end of a syllable, when it's pronounced as /t/.</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅍ" rr="p" name="pieup;피읖" ipa="pʰ,*p*aint;p,cli*p*">
+						<p>ㅍ is pronounced as /pʰ/ unless it's at the end of a syllable, when it's pronounced as /p/.</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅎ" rr="h" name="hieut;히읕" ipa="h,*h*all;t,le*t*">
+						<p>ㅎ is ??silent??/t/ when placed at the end of a word.</p>
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㄲ" rr="kk" name="ssanggiyok;쌍기역" ipa="k͈,s*k*in,k,lo*ck*">
+						ㄲ is pronounced as /k/ when at end of a syllable.
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㄸ" rr="tt" name="ssangdigeut;쌍디귿" ipa="t͈,s*t*all"></hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅃ" rr="pp" name="ssangbieup;쌍비읍" ipa="p͈,s*p*it"></hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅉ" rr="jj" name="ssangjieut;쌍지읒" ipa="tɕ͈,pi*tch*er;ts͈,ca*ts*">
+						ㅉ is pronounced as /ts͈/ when followed by back vowels.
+					</hangeul-consonant>
+				</th>
+				<th>
+					<hangeul-consonant hangeul="ㅆ" rr="ss" name="ssangsiot;쌍시옷" ipa="s͈,*s*aw;ɕ͈,*s*ee;t,le*t*">
+						<p>ㅆ is pronounced as /t/ when placed at the end of a syllable.</p>
+					</hangeul-consonant>
+				</th>
+			</tr>
+			<tr>
+				<th rowspan="0">Vowels</th>
+				<th rowspan="10">Basic</th>
+				<th rowspan="6"></th>
+				<th>
+					<hangeul-vowel hangeul="ㅏ" rr="a" name="아;a" ipa="a,*a*pple;aː,sp*a*"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="가" rr="ga"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="나" rr="na"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="다" rr="da"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="라" rr="ra"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="마" rr="ma"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="바" rr="ba"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="사" rr="sa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="아" rr="a"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="자" rr="ja"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="차" rr="cha"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="카" rr="ka"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="타" rr="ta"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="파" rr="pa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="하" rr="ha"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="까" rr="kka"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="따" rr="tta"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="빠" rr="ppa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="짜" rr="jja"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="싸" rr="ssa"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅓ" rr="eo" name="어;eo" ipa="ʌ,*u*p;əː,p*ear*l"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="거" rr="geo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="너" rr="neo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="더" rr="deo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="러" rr="reo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="머" rr="meo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="버" rr="beo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="서" rr="seo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="어" rr="eo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="저" rr="jeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="처" rr="cheo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="커" rr="keo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="터" rr="teo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퍼" rr="peo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="허" rr="heo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꺼" rr="kkeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="떠" rr="tteo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뻐" rr="ppeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쩌" rr="jjeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="써" rr="sseo"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅗ" rr="o" name="오;o" ipa="o,g*o*;oː,br*oa*d"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="고" rr="go"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="노" rr="no"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="도" rr="do"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="로" rr="ro"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="모" rr="mo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="보" rr="bo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="소" rr="so"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="오" rr="o"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="조" rr="jo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="초" rr="cho"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="코" rr="ko"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="토" rr="to"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="포" rr="po"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="호" rr="ho"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꼬" rr="kko"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="또" rr="tto"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뽀" rr="ppo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쪼" rr="jjo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쏘" rr="sso"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅜ" rr="u" name="우;u" ipa="u,r*oo*t;uː,r*u*le" notes="Rounded lips"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="구" rr="gu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="누" rr="nu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="두" rr="du"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="루" rr="ru"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="무" rr="mu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="부" rr="bu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="수" rr="su"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="우" rr="u"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="주" rr="ju"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="추" rr="chu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쿠" rr="ku"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="투" rr="tu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="푸" rr="pu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="후" rr="hu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꾸" rr="kku"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뚜" rr="ttu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뿌" rr="ppu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쭈" rr="jju"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쑤" rr="ssu"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅡ" rr="eu" name="으;eu" ipa="ɯ,b*oo*k;ɯː,r*u*de"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="그" rr="geu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="느" rr="neu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="드" rr="deu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="르" rr="reu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="므" rr="meu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="브" rr="beu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="스" rr="seu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="으" rr="eu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="즈" rr="jeu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="츠" rr="cheu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="크" rr="keu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="트" rr="teu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="프" rr="peu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="흐" rr="heu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="끄" rr="kkeu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뜨" rr="tteu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쁘" rr="ppeu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쯔" rr="jjeu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쓰" rr="sseu"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅣ" rr="i" name="이;i" ipa="i,m*ea*t;iː,m*ea*n"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="기" rr="gi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="니" rr="ni"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="디" rr="di"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="리" rr="ri"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="미" rr="mi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="비" rr="bi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="시" rr="si"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="이" rr="i"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="지" rr="ji"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="치" rr="chi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="키" rr="ki"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="티" rr="ti"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="피" rr="pi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="히" rr="hi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="끼" rr="kki"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="띠" rr="tti"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="삐" rr="ppi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="찌" rr="jji"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="씨" rr="ssi"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th rowspan="4">Iotized</th>
+				<th>
+					<hangeul-vowel hangeul="ㅑ" rr="ya" name="야;ya" ipa="ja,TBD"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="갸" rr="gya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="냐" rr="nya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="댜" rr="dya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="랴" rr="rya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="먀" rr="mya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뱌" rr="bya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="샤" rr="sya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="야" rr="ya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쟈" rr="jya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="챠" rr="chya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="캬" rr="kya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="탸" rr="tya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퍄" rr="pya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="햐" rr="hya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꺄" rr="kkya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="땨" rr="ttya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뺘" rr="ppya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쨔" rr="jjya"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쌰" rr="ssya"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅕ" rr="yeo" name="여;yeo" ipa="jʌ,TBD"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="겨" rr="gyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="녀" rr="nyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뎌" rr="dyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="려" rr="ryeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="며" rr="myeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="벼" rr="byeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="셔" rr="syeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="여" rr="yeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="져" rr="jyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쳐" rr="chyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="켜" rr="kyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="텨" rr="tyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="펴" rr="pyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="혀" rr="hyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="껴" rr="kkyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뗘" rr="ttyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뺘" rr="ppyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쪄" rr="jjyeo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쎠" rr="ssyeo"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅛ" rr="yo" name="요;yo" ipa="jo,TBD"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="교" rr="gyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뇨" rr="nyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="됴" rr="dyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="료" rr="ryo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="묘" rr="myo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뵤" rr="byo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쇼" rr="syo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="요" rr="yo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="죠" rr="jyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쵸" rr="chyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쿄" rr="kyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="툐" rr="tyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="표" rr="pyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="효" rr="hyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꾜" rr="kkyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뚀" rr="ttyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뾰" rr="ppyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쬬" rr="jjyo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쑈" rr="ssyo"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅠ" rr="yu" name="유;yu" ipa="ju,TBD"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="규" rr="gyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뉴" rr="nyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="듀" rr="dyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="류" rr="ryu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뮤" rr="myu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뷰" rr="byu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="슈" rr="syu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="유" rr="yu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쥬" rr="jyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="츄" rr="chyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="큐" rr="kyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="튜" rr="tyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퓨" rr="pyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="휴" rr="hyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뀨" rr="kkyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뜌" rr="ttyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쀼" rr="ppyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쮸" rr="jjyu"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쓔" rr="ssyu"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th rowspan="11" colspan="2">Complex / Diphthongs</th>
+				<th>
+					<hangeul-vowel hangeul="ㅐ" rr="ae" name="애;ae" ipa="ɛ,b*e*d">
+						In most dialects, 애 is pronounced the same as 에.
+					</hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="개" rr="gae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="내" rr="nae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="대" rr="dae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="래" rr="rae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="매" rr="mae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="배" rr="bae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="새" rr="sae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="애" rr="ae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="재" rr="jae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="채" rr="chae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="캐" rr="kae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="태" rr="tae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="패" rr="pae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="해" rr="hae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="깨" rr="kkae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="때" rr="ttae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="빼" rr="ppae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="째" rr="jjae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쌔" rr="ssae"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅔ" rr="e" name="에;e" ipa="e,b*e*d">
+						In most dialects, 에 is pronounced the same as 애.
+					</hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="게" rr="ge"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="네" rr="ne"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="데" rr="de"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="레" rr="re"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="메" rr="me"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="베" rr="be"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="세" rr="se"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="에" rr="e"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="제" rr="je"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="체" rr="che"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="케" rr="ke"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="테" rr="te"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="페" rr="pe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="헤" rr="he"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="께" rr="kke"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="떼" rr="tte"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뻬" rr="ppe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쩨" rr="jje"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쎄" rr="sse"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅢ" rr="ui" name="의;ui" ipa="ɰi,*we*"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="긔" rr="gui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="늬" rr="nui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="듸" rr="dui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="릐" rr="rui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="믜" rr="mui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="븨" rr="bui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="싀" rr="sui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="의" rr="ui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="즤" rr="jui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="츼" rr="chui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="킈" rr="kui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="틔" rr="tui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="픠" rr="pui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="희" rr="hui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="끠" rr="kkui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="띄" rr="ttui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쁴" rr="ppui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쯰" rr="jjui"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="씌" rr="ssui"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅒ" rr="yae" name="얘;yae" ipa="jɛ,TBD">
+						In most dialects, 얘 (yae) is pronounced the same as 예 (ye).
+					</hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="걔" rr="gyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="냬" rr="nyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="댸" rr="dyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="럐" rr="ryae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="먜" rr="myae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뱨" rr="byae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="섀" rr="syae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="얘" rr="yae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쟤" rr="jyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="챼" rr="chyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="컈" rr="kyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="턔" rr="tyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퍠" rr="pyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="햬" rr="hyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꺠" rr="kkyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="떄" rr="ttyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뺴" rr="ppyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쨰" rr="jjyae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="썌" rr="ssyae"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅖ" rr="ye" name="예;je" ipa="jɛ,TBD">
+						In most dialects, 예 (ye) is pronounced the same as 얘 (yae).
+					</hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="계" rr="gye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="녜" rr="nye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뎨" rr="dye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="례" rr="rye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="몌" rr="mye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="볘" rr="bye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="셰" rr="sye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="예" rr="ye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="졔" rr="jye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쳬" rr="chye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="켸" rr="kye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="톄" rr="tye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="폐" rr="pye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="혜" rr="hye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꼐" rr="kkye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뗴" rr="ttye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뼤" rr="ppye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쪠" rr="jjye"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쎼" rr="ssye"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅘ" rr="wa" name="와;wa" ipa="wa,TBD"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="과" rr="gwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="놔" rr="nwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="돠" rr="dwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="롸" rr="rwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뫄" rr="mwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="봐" rr="bwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="솨" rr="swa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="와" rr="wa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="좌" rr="jwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="촤" rr="chwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="콰" rr="kwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="톼" rr="twa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퐈" rr="pwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="화" rr="hwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꽈" rr="kkwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="똬" rr="ttwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뽜" rr="ppwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쫘" rr="jjwa"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쏴" rr="sswa"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅙ" rr="wae" name="왜;wae" ipa="wɛ,TBD">
+						In most dialects, 왜 (wae) is pronounced the same as 외 (oe) and 웨 (we).
+					</hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="괘" rr="gwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="놰" rr="nwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="돼" rr="dwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뢔" rr="rwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뫠" rr="mwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="봬" rr="bwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쇄" rr="swae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="왜" rr="wae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="좨" rr="jwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쵀" rr="chwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쾌" rr="kwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퇘" rr="twae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퐤" rr="pwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="홰" rr="hwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꽤" rr="kkwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뙈" rr="ttwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뽸" rr="ppwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쫴" rr="jjwae"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쐐" rr="sswae"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅚ" rr="oe" name="외;oe" ipa="ø,TBD;we,TBD">
+						In most dialects, 외 (oe) is pronounced the same as 왜 (wae) and 웨 (we).
+					</hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="괴" rr="goe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뇌" rr="noe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="되" rr="doe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뢰" rr="roe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뫼" rr="moe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뵈" rr="boe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쇠" rr="soe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="외" rr="oe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="죄" rr="joe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="최" rr="choe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쾨" rr="koe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퇴" rr="toe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="푀" rr="poe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="회" rr="hoe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꾀" rr="kkoe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뙤" rr="ttoe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뾔" rr="ppoe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쬐" rr="jjoe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쐬" rr="ssoe"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅝ" rr="wo" name="워;wo" ipa="wʌ,TBD"></hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="궈" rr="gwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="눠" rr="nwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="둬" rr="dwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뤄" rr="rwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뭐" rr="mwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="붜" rr="bwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="숴" rr="swo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="워" rr="wo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="줘" rr="jwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="춰" rr="chwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쿼" rr="kwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퉈" rr="two"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="풔" rr="pwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="훠" rr="hwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꿔" rr="kkwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뚸" rr="ttwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뿨" rr="ppwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쭤" rr="jjwo"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쒀" rr="sswo"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅞ" rr="we" name="웨;we" ipa="we,TBD">
+						In most dialects, 웨 (we) is pronounced the same as 외 (oe) and 왜 (wae).
+					</hangeul-vowel>
+				</th>
+				<td>
+					<hangeul-character hangeul="궤" rr="gwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="눼" rr="nwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뒈" rr="dwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뤠" rr="rwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뭬" rr="mwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="붸" rr="bwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쉐" rr="swe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="웨" rr="we"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="줴" rr="jwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="췌" rr="chwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퀘" rr="kwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퉤" rr="twe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="풰" rr="pwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="훼" rr="hwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="꿰" rr="kkwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뛔" rr="ttwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쀄" rr="ppwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쮀" rr="jjwe"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쒜" rr="sswe"></hangeul-character>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<hangeul-vowel hangeul="ㅟ" rr="wi" name="위;wi" ipa="wi,TBD"></hangeul-vowel>
+				</th>
+
+				<td>
+					<hangeul-character hangeul="귀" rr="gwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뉘" rr="nwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뒤" rr="dwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뤼" rr="rwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뮈" rr="mwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뷔" rr="bwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쉬" rr="swi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="위" rr="wi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쥐" rr="jwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="취" rr="chwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퀴" rr="kwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="튀" rr="twi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="퓌" rr="pwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="휘" rr="hwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뀌" rr="kkwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="뛰" rr="ttwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쀠" rr="ppwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쮜" rr="jjwi"></hangeul-character>
+				</td>
+				<td>
+					<hangeul-character hangeul="쒸" rr="sswi"></hangeul-character>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

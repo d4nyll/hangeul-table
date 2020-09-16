@@ -1,6 +1,6 @@
-import HangeulBaseCharacter from './HangeulBaseCharacter.js';
+import HangeulCharacter from './HangeulCharacter.js';
 
-export default class HangeulVowel extends HangeulBaseCharacter {
+export default class HangeulVowel extends HangeulCharacter {
 
 	get name() {
 		return this.getAttribute('name');

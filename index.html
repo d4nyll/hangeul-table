@@ -70,7 +70,7 @@
 			}
 
 			table {
-				table-layout: fixed;
+				table-layout: auto;
 				border-collapse: collapse;
 				width: 100%;
 				background-color: #e8eded;
@@ -81,7 +81,8 @@
 			}
 
 			th, td {
-				padding: 6px
+				padding: 6px;
+  				white-space: nowrap;
 			}
 
 			span.pronunciation {
@@ -104,6 +105,7 @@
 				<div id="infobox_rr"></div>
 				<table id="ipa_table"></table>
 				<div id="notes"><slot></slot></div>
+				<table id="examples_table"></table>
 			</div>
 		</div>
 	</template>

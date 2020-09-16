@@ -34,3 +34,7 @@ a {
 hangeul-vowel, hangeul-consonant {
 	font-weight: 400;
 }
+
+[unused] {
+	color: lightgrey;
+}

@@ -29,6 +29,18 @@ export default class HangeulCharacter extends HTMLElement {
 		this.attachShadow({ mode: 'open' }).appendChild(template.content.cloneNode(true));
 	}
 
+	get unused() {
+		return this.hasAttribute('hangeul');
+	}
+
+	set unused(val) {
+		if (val) {
+			this.setAttribute('unused', '');
+		} else {
+			this.removeAttribute('unused');
+		}
+	}
+
 	get hangeul() {
 		return this.getAttribute('hangeul');
 	}
